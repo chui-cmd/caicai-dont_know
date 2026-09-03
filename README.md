@@ -13,12 +13,14 @@
 
 ## 已有示例
 
-- `multiplication_table_99.py`: 九九乘法表 Python 示例
+- `九九乘法表.py`: 九九乘法表 Python 示例
+- `scripts/指标预处理模板.py`: 指标正向化与标准化模板
 
 ## 常用命令
 
 ```powershell
-python multiplication_table_99.py
+python 九九乘法表.py
+python scripts/指标预处理模板.py
 git status
 git add .
 git commit -m "Update modeling code"
