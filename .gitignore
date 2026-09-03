@@ -1,0 +1,30 @@
+# Python cache and environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Data and generated results
+data/*
+!data/.gitkeep
+outputs/*
+!outputs/.gitkeep
+
+# Large local software/installers
+mat/
+*.zip
+*.7z
+*.rar
+*.exe
+*.dll
+*.lic
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
