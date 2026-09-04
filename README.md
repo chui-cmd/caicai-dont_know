@@ -31,6 +31,8 @@
 - `scripts/三/插值与最小二乘拟合全过程.py`: 一维插值、多项式最小二乘、非线性最小二乘拟合模板
 - `scripts/四/线性规划全过程.py`: 线性规划建模、求解、目标值与约束松弛量分析模板
 - `scripts/四/整数规划与01规划全过程.py`: 整数规划与0-1规划建模、求解和结果分析模板
+- `scripts/五/Kmeans聚类全过程.py`: K-means聚类、K值选择、PCA可视化与聚类画像模板
+- `scripts/五/分类流程全过程.py`: 分类建模、训练测试划分、评价指标、混淆矩阵与特征重要性模板
 
 ## 常用命令
 
@@ -49,6 +51,8 @@ python scripts/三/GM11灰色预测全过程.py
 python scripts/三/插值与最小二乘拟合全过程.py
 python scripts/四/线性规划全过程.py
 python scripts/四/整数规划与01规划全过程.py
+python scripts/五/Kmeans聚类全过程.py
+python scripts/五/分类流程全过程.py
 git status
 git add .
 git commit -m "Update modeling code"
