@@ -6,6 +6,8 @@
 
 - `src/`: 通用 Python 代码和模型实现
 - `scripts/`: 可直接运行的实验脚本
+- `scripts/数据预处理/`: 数据读取、清洗、标准化和相关性分析
+- `scripts/二/`: 综合评价与权重计算方法
 - `notebooks/`: Jupyter Notebook 分析过程
 - `data/`: 本地数据文件，默认不提交到 GitHub
 - `outputs/`: 图表、预测结果等输出文件，默认不提交到 GitHub
@@ -17,6 +19,8 @@
 - `scripts/数据预处理/指标预处理模板.py`: 指标正向化、Z-score 标准化、极差标准化模板
 - `scripts/数据预处理/相关性热力图.py`: Pearson 与 Spearman 相关性热力图模板
 - `scripts/数据预处理/数据读取与缺失异常值填补.py`: 数据读取、缺失值填补、异常值检测与处理模板
+- `scripts/二/层次分析法全过程.py`: AHP 层次分析法权重计算、一致性检验与方案评分模板
+- `scripts/二/熵权法全过程.py`: 熵权法正向化、归一化、权重计算与综合评分模板
 
 ## 常用命令
 
@@ -26,6 +30,8 @@ python 九九乘法表.py
 python scripts/数据预处理/指标预处理模板.py
 python scripts/数据预处理/相关性热力图.py
 python scripts/数据预处理/数据读取与缺失异常值填补.py
+python scripts/二/层次分析法全过程.py
+python scripts/二/熵权法全过程.py
 git status
 git add .
 git commit -m "Update modeling code"
