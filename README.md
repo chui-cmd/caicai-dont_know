@@ -28,6 +28,8 @@
 - `scripts/三/多元线性回归全过程.py`: 多元线性回归系数、R2、p值与残差诊断图模板
 - `scripts/三/GM11灰色预测全过程.py`: GM(1,1) 灰色预测、级比检验、误差评价与预测图模板
 - `scripts/三/插值与最小二乘拟合全过程.py`: 一维插值、多项式最小二乘、非线性最小二乘拟合模板
+- `scripts/四/线性规划全过程.py`: 线性规划建模、求解、目标值与约束松弛量分析模板
+- `scripts/四/整数规划与01规划全过程.py`: 整数规划与0-1规划建模、求解和结果分析模板
 
 ## 常用命令
 
@@ -44,6 +46,8 @@ python scripts/二/熵权法加TOPSIS全过程.py
 python scripts/三/多元线性回归全过程.py
 python scripts/三/GM11灰色预测全过程.py
 python scripts/三/插值与最小二乘拟合全过程.py
+python scripts/四/线性规划全过程.py
+python scripts/四/整数规划与01规划全过程.py
 git status
 git add .
 git commit -m "Update modeling code"
