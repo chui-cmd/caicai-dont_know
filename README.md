@@ -24,6 +24,7 @@
 - `scripts/二/熵权法全过程.py`: 熵权法正向化、归一化、权重计算与综合评分模板
 - `scripts/二/TOPSIS排序全过程.py`: TOPSIS 正负理想解、贴近度计算与方案排序模板
 - `scripts/二/熵权法加TOPSIS全过程.py`: 熵权法自动赋权与 TOPSIS 综合排序模板
+- `scripts/三/多元线性回归全过程.py`: 多元线性回归系数、R2、p值与残差诊断图模板
 
 ## 常用命令
 
@@ -37,6 +38,7 @@ python scripts/二/层次分析法全过程.py
 python scripts/二/熵权法全过程.py
 python scripts/二/TOPSIS排序全过程.py
 python scripts/二/熵权法加TOPSIS全过程.py
+python scripts/三/多元线性回归全过程.py
 git status
 git add .
 git commit -m "Update modeling code"
