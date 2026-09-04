@@ -9,6 +9,18 @@ Usage:
 """
 
 from pathlib import Path
+import sys
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+sys.path.append(str(PROJECT_ROOT / "src"))
+
+from 科研绘图配色 import (
+    科研调色板,
+    科研配色,
+    科研连续色带,
+    科研顺序色带,
+    设置科研绘图风格,
+)
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -36,9 +48,7 @@ EPS = 1e-12
 
 
 def setup_plot_style():
-    plt.rcParams["font.sans-serif"] = ["SimHei", "Microsoft YaHei", "Arial Unicode MS"]
-    plt.rcParams["axes.unicode_minus"] = False
-    sns.set_theme(style="whitegrid", font="SimHei")
+    设置科研绘图风格(plt, sns)
 
 
 def read_table(file_path):
@@ -144,7 +154,7 @@ def save_table(df, output_path):
 
 def plot_weight_bar(weight_df):
     plt.figure(figsize=(9, 5))
-    sns.barplot(data=weight_df, x="权重", y="指标", color="#3A6EA5")
+    sns.barplot(data=weight_df, x="权重", y="指标", color=科研配色["深蓝"])
     plt.title("熵权法指标权重")
     plt.xlabel("权重")
     plt.ylabel("指标")
@@ -164,7 +174,7 @@ def plot_score_ranking(score_df):
         plot_df["样本名称"] = plot_df.index.astype(str)
 
     plt.figure(figsize=(9, max(4, len(plot_df) * 0.45)))
-    sns.barplot(data=plot_df, x="熵权法综合得分", y="样本名称", color="#1B9E77")
+    sns.barplot(data=plot_df, x="熵权法综合得分", y="样本名称", color=科研配色["浅蓝"])
     plt.title("熵权法综合得分排序")
     plt.xlabel("综合得分")
     plt.ylabel("样本")
@@ -177,7 +187,7 @@ def plot_normalized_heatmap(normalized_df, cols):
     plt.figure(figsize=(max(8, len(cols) * 0.85), max(5, len(normalized_df) * 0.28)))
     sns.heatmap(
         normalized_df[cols],
-        cmap="YlGnBu",
+        cmap=科研顺序色带,
         linewidths=0.2,
         cbar_kws={"label": "归一化值"},
     )

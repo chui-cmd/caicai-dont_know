@@ -9,6 +9,18 @@ Usage:
 """
 
 from pathlib import Path
+import sys
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+sys.path.append(str(PROJECT_ROOT / "src"))
+
+from 科研绘图配色 import (
+    科研调色板,
+    科研配色,
+    科研连续色带,
+    科研顺序色带,
+    设置科研绘图风格,
+)
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -55,9 +67,7 @@ COLUMN_RULES = {
 
 
 def setup_plot_style():
-    plt.rcParams["font.sans-serif"] = ["SimHei", "Microsoft YaHei", "Arial Unicode MS"]
-    plt.rcParams["axes.unicode_minus"] = False
-    sns.set_theme(style="whitegrid", font="SimHei")
+    设置科研绘图风格(plt, sns)
 
 
 def read_table(file_path):
@@ -210,7 +220,7 @@ def plot_missing_summary(missing_summary, output_path):
         return
 
     plt.figure(figsize=(10, max(4, len(plot_df) * 0.45)))
-    sns.barplot(data=plot_df, x="缺失比例", y="字段名", color="#3A6EA5")
+    sns.barplot(data=plot_df, x="缺失比例", y="字段名", color=科研配色["深蓝"])
     plt.title("各字段缺失值比例")
     plt.xlabel("缺失比例")
     plt.ylabel("字段名")
@@ -243,7 +253,7 @@ def plot_numeric_boxplots(before_df, after_df, column_rules, output_path):
     plot_df = pd.concat(plot_data, ignore_index=True)
 
     plt.figure(figsize=(max(9, len(numeric_cols) * 1.2), 6))
-    sns.boxplot(data=plot_df, x="字段名", y="数值", hue="阶段", palette=["#D95F02", "#1B9E77"])
+    sns.boxplot(data=plot_df, x="字段名", y="数值", hue="阶段", palette=[科研配色["红"], 科研配色["浅蓝"]])
     plt.title("异常值处理前后箱线图对比")
     plt.xlabel("字段名")
     plt.ylabel("数值")

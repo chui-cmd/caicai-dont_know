@@ -16,6 +16,18 @@ Usage:
 """
 
 from pathlib import Path
+import sys
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+sys.path.append(str(PROJECT_ROOT / "src"))
+
+from 科研绘图配色 import (
+    科研调色板,
+    科研配色,
+    科研连续色带,
+    科研顺序色带,
+    设置科研绘图风格,
+)
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -35,9 +47,7 @@ EPS = 1e-12
 
 
 def setup_plot_style():
-    plt.rcParams["font.sans-serif"] = ["SimHei", "Microsoft YaHei", "Arial Unicode MS"]
-    plt.rcParams["axes.unicode_minus"] = False
-    sns.set_theme(style="whitegrid", font="SimHei")
+    设置科研绘图风格(plt, sns)
 
 
 def read_table(file_path):
@@ -161,10 +171,10 @@ def plot_fit_and_forecast(result_df):
     history_df = result_df[result_df["数据类型"] == "历史"]
     forecast_df = result_df[result_df["数据类型"] == "预测"]
 
-    plt.plot(history_df[TIME_COLUMN], history_df["真实值"], marker="o", label="真实值", color="#3A6EA5")
-    plt.plot(history_df[TIME_COLUMN], history_df["GM11预测值"], marker="s", label="拟合值", color="#D95F02")
+    plt.plot(history_df[TIME_COLUMN], history_df["真实值"], marker="o", label="真实值", color=科研配色["深蓝"])
+    plt.plot(history_df[TIME_COLUMN], history_df["GM11预测值"], marker="s", label="拟合值", color=科研配色["红"])
     if not forecast_df.empty:
-        plt.plot(forecast_df[TIME_COLUMN], forecast_df["GM11预测值"], marker="^", label="未来预测", color="#1B9E77")
+        plt.plot(forecast_df[TIME_COLUMN], forecast_df["GM11预测值"], marker="^", label="未来预测", color=科研配色["浅蓝"])
 
     plt.title("GM(1,1)灰色预测拟合与外推")
     plt.xlabel(TIME_COLUMN)
@@ -179,8 +189,8 @@ def plot_residual(result_df):
     history_df = result_df[result_df["数据类型"] == "历史"].copy()
 
     plt.figure(figsize=(9, 5))
-    sns.barplot(data=history_df, x=TIME_COLUMN, y="残差", color="#3A6EA5")
-    plt.axhline(0, color="#D95F02", linestyle="--", linewidth=1)
+    sns.barplot(data=history_df, x=TIME_COLUMN, y="残差", color=科研配色["深蓝"])
+    plt.axhline(0, color=科研配色["红"], linestyle="--", linewidth=1)
     plt.title("GM(1,1)拟合残差图")
     plt.xlabel(TIME_COLUMN)
     plt.ylabel("残差")

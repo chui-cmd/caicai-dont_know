@@ -16,6 +16,18 @@ Usage:
 """
 
 from pathlib import Path
+import sys
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+sys.path.append(str(PROJECT_ROOT / "src"))
+
+from 科研绘图配色 import (
+    科研调色板,
+    科研配色,
+    科研连续色带,
+    科研顺序色带,
+    设置科研绘图风格,
+)
 
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -61,9 +73,7 @@ RANDOM_STATE = 42
 
 
 def setup_plot_style():
-    plt.rcParams["font.sans-serif"] = ["SimHei", "Microsoft YaHei", "Arial Unicode MS"]
-    plt.rcParams["axes.unicode_minus"] = False
-    sns.set_theme(style="whitegrid", font="SimHei")
+    设置科研绘图风格(plt, sns)
 
 
 def read_table(file_path):
@@ -180,7 +190,7 @@ def plot_confusion_matrix(y_true, y_pred, class_names):
     matrix = confusion_matrix(y_true, y_pred)
 
     plt.figure(figsize=(7, 6))
-    sns.heatmap(matrix, annot=True, fmt="d", cmap="YlGnBu", xticklabels=class_names, yticklabels=class_names)
+    sns.heatmap(matrix, annot=True, fmt="d", cmap=科研顺序色带, xticklabels=class_names, yticklabels=class_names)
     plt.title("分类混淆矩阵")
     plt.xlabel("预测类别")
     plt.ylabel("真实类别")
@@ -197,8 +207,8 @@ def plot_roc_curve(y_true, y_prob):
     auc_value = roc_auc_score(y_true, y_prob[:, 1])
 
     plt.figure(figsize=(7, 6))
-    plt.plot(fpr, tpr, color="#3A6EA5", linewidth=2, label=f"AUC = {auc_value:.3f}")
-    plt.plot([0, 1], [0, 1], color="#D95F02", linestyle="--")
+    plt.plot(fpr, tpr, color=科研配色["深蓝"], linewidth=2, label=f"AUC = {auc_value:.3f}")
+    plt.plot([0, 1], [0, 1], color=科研配色["红"], linestyle="--")
     plt.title("二分类ROC曲线")
     plt.xlabel("假阳性率")
     plt.ylabel("真阳性率")
@@ -214,7 +224,7 @@ def plot_feature_importance(importance_df):
 
     plot_df = importance_df.head(20)
     plt.figure(figsize=(9, max(4, len(plot_df) * 0.45)))
-    sns.barplot(data=plot_df, x="重要性", y="特征", color="#3A6EA5")
+    sns.barplot(data=plot_df, x="重要性", y="特征", color=科研配色["深蓝"])
     plt.title("分类模型特征重要性")
     plt.xlabel("重要性")
     plt.ylabel("特征")

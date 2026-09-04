@@ -16,6 +16,18 @@ Usage:
 """
 
 from pathlib import Path
+import sys
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+sys.path.append(str(PROJECT_ROOT / "src"))
+
+from 科研绘图配色 import (
+    科研调色板,
+    科研配色,
+    科研连续色带,
+    科研顺序色带,
+    设置科研绘图风格,
+)
 
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -45,9 +57,7 @@ RANDOM_STATE = 42
 
 
 def setup_plot_style():
-    plt.rcParams["font.sans-serif"] = ["SimHei", "Microsoft YaHei", "Arial Unicode MS"]
-    plt.rcParams["axes.unicode_minus"] = False
-    sns.set_theme(style="whitegrid", font="SimHei")
+    设置科研绘图风格(plt, sns)
 
 
 def read_table(file_path):
@@ -155,12 +165,12 @@ def plot_k_selection(k_eval_df):
         return
 
     fig, axes = plt.subplots(1, 2, figsize=(12, 5))
-    sns.lineplot(data=k_eval_df, x="K值", y="SSE", marker="o", ax=axes[0], color="#3A6EA5")
+    sns.lineplot(data=k_eval_df, x="K值", y="SSE", marker="o", ax=axes[0], color=科研配色["深蓝"])
     axes[0].set_title("肘部法选择K值")
     axes[0].set_xlabel("K值")
     axes[0].set_ylabel("SSE")
 
-    sns.lineplot(data=k_eval_df, x="K值", y="轮廓系数", marker="o", ax=axes[1], color="#1B9E77")
+    sns.lineplot(data=k_eval_df, x="K值", y="轮廓系数", marker="o", ax=axes[1], color=科研配色["浅蓝"])
     axes[1].set_title("轮廓系数选择K值")
     axes[1].set_xlabel("K值")
     axes[1].set_ylabel("轮廓系数")
@@ -180,7 +190,7 @@ def plot_pca_cluster(scaled_df, labels):
     })
 
     plt.figure(figsize=(8, 6))
-    sns.scatterplot(data=plot_df, x="主成分1", y="主成分2", hue="聚类类别", palette="Set2", s=80)
+    sns.scatterplot(data=plot_df, x="主成分1", y="主成分2", hue="聚类类别", palette=科研调色板, s=80)
     plt.title("K-means聚类结果PCA二维展示")
     plt.xlabel(f"主成分1 解释方差: {pca.explained_variance_ratio_[0]:.2%}")
     plt.ylabel(f"主成分2 解释方差: {pca.explained_variance_ratio_[1]:.2%}")
@@ -193,7 +203,7 @@ def plot_cluster_profile(scaled_centers):
     profile_df = scaled_centers.set_index("聚类类别")
 
     plt.figure(figsize=(max(8, profile_df.shape[1] * 0.8), max(4, profile_df.shape[0] * 0.7)))
-    sns.heatmap(profile_df, annot=True, fmt=".2f", cmap="RdBu_r", center=0, linewidths=0.5)
+    sns.heatmap(profile_df, annot=True, fmt=".2f", cmap=科研连续色带, center=0, linewidths=0.5)
     plt.title("各聚类中心标准化特征画像")
     plt.xlabel("特征")
     plt.ylabel("聚类类别")

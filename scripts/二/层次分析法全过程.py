@@ -9,6 +9,18 @@ Usage:
 """
 
 from pathlib import Path
+import sys
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+sys.path.append(str(PROJECT_ROOT / "src"))
+
+from 科研绘图配色 import (
+    科研调色板,
+    科研配色,
+    科研连续色带,
+    科研顺序色带,
+    设置科研绘图风格,
+)
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -52,9 +64,7 @@ RI_TABLE = {
 
 
 def setup_plot_style():
-    plt.rcParams["font.sans-serif"] = ["SimHei", "Microsoft YaHei", "Arial Unicode MS"]
-    plt.rcParams["axes.unicode_minus"] = False
-    sns.set_theme(style="whitegrid", font="SimHei")
+    设置科研绘图风格(plt, sns)
 
 
 def check_judgment_matrix(matrix):
@@ -150,7 +160,7 @@ def save_outputs(weights, criteria_names, consistency_result, judgment_matrix):
 
 def plot_weight_bar(weight_df):
     plt.figure(figsize=(9, 5))
-    sns.barplot(data=weight_df, x="权重", y="指标", color="#3A6EA5")
+    sns.barplot(data=weight_df, x="权重", y="指标", color=科研配色["深蓝"])
     plt.title("层次分析法指标权重")
     plt.xlabel("权重")
     plt.ylabel("指标")
@@ -165,7 +175,7 @@ def plot_judgment_heatmap(matrix, criteria_names):
         pd.DataFrame(matrix, index=criteria_names, columns=criteria_names),
         annot=True,
         fmt=".3g",
-        cmap="YlGnBu",
+        cmap=科研顺序色带,
         linewidths=0.5,
         cbar_kws={"label": "相对重要性"},
     )
@@ -183,7 +193,7 @@ def plot_alternative_scores(score_df):
     plot_df["方案名称"] = plot_df[name_col] if name_col else plot_df.index.astype(str)
 
     plt.figure(figsize=(9, max(4, len(plot_df) * 0.45)))
-    sns.barplot(data=plot_df, x="AHP综合得分", y="方案名称", color="#1B9E77")
+    sns.barplot(data=plot_df, x="AHP综合得分", y="方案名称", color=科研配色["浅蓝"])
     plt.title("方案AHP综合得分排序")
     plt.xlabel("综合得分")
     plt.ylabel("方案")

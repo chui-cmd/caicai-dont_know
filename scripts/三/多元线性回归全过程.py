@@ -15,6 +15,18 @@ Usage:
 """
 
 from pathlib import Path
+import sys
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+sys.path.append(str(PROJECT_ROOT / "src"))
+
+from 科研绘图配色 import (
+    科研调色板,
+    科研配色,
+    科研连续色带,
+    科研顺序色带,
+    设置科研绘图风格,
+)
 
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -42,9 +54,7 @@ MISSING_FILL_STRATEGY = "median"
 
 
 def setup_plot_style():
-    plt.rcParams["font.sans-serif"] = ["SimHei", "Microsoft YaHei", "Arial Unicode MS"]
-    plt.rcParams["axes.unicode_minus"] = False
-    sns.set_theme(style="whitegrid", font="SimHei")
+    设置科研绘图风格(plt, sns)
 
 
 def read_table(file_path):
@@ -149,8 +159,8 @@ def save_table(df, output_path):
 
 def plot_residual_vs_fitted(prediction_df):
     plt.figure(figsize=(8, 5))
-    sns.scatterplot(data=prediction_df, x="预测值", y="残差", color="#3A6EA5")
-    plt.axhline(0, color="#D95F02", linestyle="--", linewidth=1.2)
+    sns.scatterplot(data=prediction_df, x="预测值", y="残差", color=科研配色["深蓝"])
+    plt.axhline(0, color=科研配色["红"], linestyle="--", linewidth=1.2)
     plt.title("残差-拟合值图")
     plt.xlabel("预测值")
     plt.ylabel("残差")
@@ -161,10 +171,10 @@ def plot_residual_vs_fitted(prediction_df):
 
 def plot_actual_vs_predicted(prediction_df):
     plt.figure(figsize=(6, 6))
-    sns.scatterplot(data=prediction_df, x="真实值", y="预测值", color="#1B9E77")
+    sns.scatterplot(data=prediction_df, x="真实值", y="预测值", color=科研配色["浅蓝"])
     min_value = min(prediction_df["真实值"].min(), prediction_df["预测值"].min())
     max_value = max(prediction_df["真实值"].max(), prediction_df["预测值"].max())
-    plt.plot([min_value, max_value], [min_value, max_value], color="#D95F02", linestyle="--")
+    plt.plot([min_value, max_value], [min_value, max_value], color=科研配色["红"], linestyle="--")
     plt.title("真实值与预测值对比")
     plt.xlabel("真实值")
     plt.ylabel("预测值")
@@ -175,7 +185,7 @@ def plot_actual_vs_predicted(prediction_df):
 
 def plot_residual_histogram(prediction_df):
     plt.figure(figsize=(8, 5))
-    sns.histplot(prediction_df["残差"], kde=True, color="#3A6EA5")
+    sns.histplot(prediction_df["残差"], kde=True, color=科研配色["深蓝"])
     plt.title("残差分布直方图")
     plt.xlabel("残差")
     plt.ylabel("频数")
@@ -199,8 +209,8 @@ def plot_coefficient_bar(coefficient_df):
         return
 
     plt.figure(figsize=(9, max(4, len(plot_df) * 0.45)))
-    sns.barplot(data=plot_df, x="回归系数", y="变量", color="#3A6EA5")
-    plt.axvline(0, color="#D95F02", linestyle="--", linewidth=1)
+    sns.barplot(data=plot_df, x="回归系数", y="变量", color=科研配色["深蓝"])
+    plt.axvline(0, color=科研配色["红"], linestyle="--", linewidth=1)
     plt.title("多元线性回归系数")
     plt.xlabel("回归系数")
     plt.ylabel("变量")

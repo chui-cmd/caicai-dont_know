@@ -16,6 +16,18 @@ Usage:
 """
 
 from pathlib import Path
+import sys
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+sys.path.append(str(PROJECT_ROOT / "src"))
+
+from 科研绘图配色 import (
+    科研调色板,
+    科研配色,
+    科研连续色带,
+    科研顺序色带,
+    设置科研绘图风格,
+)
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -58,9 +70,7 @@ BOUNDS = [
 
 
 def setup_plot_style():
-    plt.rcParams["font.sans-serif"] = ["SimHei", "Microsoft YaHei", "Arial Unicode MS"]
-    plt.rcParams["axes.unicode_minus"] = False
-    sns.set_theme(style="whitegrid", font="SimHei")
+    设置科研绘图风格(plt, sns)
 
 
 def check_model():
@@ -162,7 +172,7 @@ def plot_solution_bar(solution_df):
         return
 
     plt.figure(figsize=(8, 5))
-    sns.barplot(data=solution_df, x="变量", y="最优取值", color="#3A6EA5")
+    sns.barplot(data=solution_df, x="变量", y="最优取值", color=科研配色["深蓝"])
     plt.title("线性规划最优决策变量")
     plt.xlabel("变量")
     plt.ylabel("最优取值")
@@ -176,8 +186,8 @@ def plot_constraint_slack(constraint_df):
         return
 
     plt.figure(figsize=(9, max(4, len(constraint_df) * 0.45)))
-    sns.barplot(data=constraint_df, x="松弛量", y="约束名称", color="#1B9E77")
-    plt.axvline(0, color="#D95F02", linestyle="--", linewidth=1)
+    sns.barplot(data=constraint_df, x="松弛量", y="约束名称", color=科研配色["浅蓝"])
+    plt.axvline(0, color=科研配色["红"], linestyle="--", linewidth=1)
     plt.title("线性规划约束松弛量")
     plt.xlabel("松弛量")
     plt.ylabel("约束")

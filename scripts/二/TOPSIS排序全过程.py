@@ -9,6 +9,18 @@ Usage:
 """
 
 from pathlib import Path
+import sys
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+sys.path.append(str(PROJECT_ROOT / "src"))
+
+from 科研绘图配色 import (
+    科研调色板,
+    科研配色,
+    科研连续色带,
+    科研顺序色带,
+    设置科研绘图风格,
+)
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -42,9 +54,7 @@ WEIGHTS = {
 
 
 def setup_plot_style():
-    plt.rcParams["font.sans-serif"] = ["SimHei", "Microsoft YaHei", "Arial Unicode MS"]
-    plt.rcParams["axes.unicode_minus"] = False
-    sns.set_theme(style="whitegrid", font="SimHei")
+    设置科研绘图风格(plt, sns)
 
 
 def read_table(file_path):
@@ -173,7 +183,7 @@ def plot_ranking(score_df):
         plot_df["方案名称"] = plot_df.index.astype(str)
 
     plt.figure(figsize=(9, max(4, len(plot_df) * 0.45)))
-    sns.barplot(data=plot_df, x="TOPSIS贴近度", y="方案名称", color="#1B9E77")
+    sns.barplot(data=plot_df, x="TOPSIS贴近度", y="方案名称", color=科研配色["浅蓝"])
     plt.title("TOPSIS综合评价排序")
     plt.xlabel("贴近度")
     plt.ylabel("方案")
@@ -190,7 +200,7 @@ def plot_distance_scatter(score_df):
         labels = plot_df.index.astype(str).tolist()
 
     plt.figure(figsize=(8, 6))
-    sns.scatterplot(data=plot_df, x="正理想解距离", y="负理想解距离", size="TOPSIS贴近度", sizes=(60, 260), color="#3A6EA5")
+    sns.scatterplot(data=plot_df, x="正理想解距离", y="负理想解距离", size="TOPSIS贴近度", sizes=(60, 260), color=科研配色["深蓝"])
     for i, label in enumerate(labels):
         plt.text(plot_df["正理想解距离"].iloc[i], plot_df["负理想解距离"].iloc[i], label, fontsize=9)
     plt.title("TOPSIS正负理想解距离分布")
@@ -205,7 +215,7 @@ def plot_weight_bar(cols, weight_vector):
     weight_df = pd.DataFrame({"指标": cols, "权重": weight_vector}).sort_values("权重", ascending=False)
 
     plt.figure(figsize=(9, 5))
-    sns.barplot(data=weight_df, x="权重", y="指标", color="#3A6EA5")
+    sns.barplot(data=weight_df, x="权重", y="指标", color=科研配色["深蓝"])
     plt.title("TOPSIS指标权重")
     plt.xlabel("权重")
     plt.ylabel("指标")

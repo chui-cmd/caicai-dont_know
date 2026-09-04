@@ -15,6 +15,18 @@ Usage:
 """
 
 from pathlib import Path
+import sys
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+sys.path.append(str(PROJECT_ROOT / "src"))
+
+from 科研绘图配色 import (
+    科研调色板,
+    科研配色,
+    科研连续色带,
+    科研顺序色带,
+    设置科研绘图风格,
+)
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -38,9 +50,7 @@ INDICATORS = {
 
 
 def setup_plot_style():
-    plt.rcParams["font.sans-serif"] = ["SimHei", "Microsoft YaHei", "Arial Unicode MS"]
-    plt.rcParams["axes.unicode_minus"] = False
-    sns.set_theme(style="whitegrid", font="SimHei")
+    设置科研绘图风格(plt, sns)
 
 
 def read_table(file_path):
@@ -111,7 +121,7 @@ def save_table(df, output_path):
 def plot_heatmap(df, cols, title, output_path):
     plt.figure(figsize=(9, 6))
     corr = df[cols].corr()
-    sns.heatmap(corr, annot=True, fmt=".2f", cmap="RdBu_r", center=0, linewidths=0.5)
+    sns.heatmap(corr, annot=True, fmt=".2f", cmap=科研连续色带, center=0, linewidths=0.5)
     plt.title(title)
     plt.tight_layout()
     plt.savefig(output_path, dpi=300, bbox_inches="tight")
@@ -146,7 +156,7 @@ def plot_distribution_compare(original_df, positive_df, zscore_df, minmax_df, co
         height=2.6,
         aspect=1.25,
     )
-    g.map_dataframe(sns.histplot, x="数值", kde=True, color="#3A6EA5")
+    g.map_dataframe(sns.histplot, x="数值", kde=True, color=科研配色["深蓝"])
     g.set_titles(row_template="{row_name}", col_template="{col_name}")
     g.figure.suptitle("指标预处理前后分布对比", y=1.02, fontsize=16)
     plt.savefig(output_path, dpi=300, bbox_inches="tight")

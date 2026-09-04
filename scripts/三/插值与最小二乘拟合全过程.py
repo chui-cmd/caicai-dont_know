@@ -15,6 +15,18 @@ Usage:
 """
 
 from pathlib import Path
+import sys
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+sys.path.append(str(PROJECT_ROOT / "src"))
+
+from 科研绘图配色 import (
+    科研调色板,
+    科研配色,
+    科研连续色带,
+    科研顺序色带,
+    设置科研绘图风格,
+)
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -51,9 +63,7 @@ EPS = 1e-12
 
 
 def setup_plot_style():
-    plt.rcParams["font.sans-serif"] = ["SimHei", "Microsoft YaHei", "Arial Unicode MS"]
-    plt.rcParams["axes.unicode_minus"] = False
-    sns.set_theme(style="whitegrid", font="SimHei")
+    设置科研绘图风格(plt, sns)
 
 
 def read_table(file_path):
@@ -210,20 +220,20 @@ def save_table(df, output_path):
 
 def plot_all_methods(xy_df, interpolation_df, polynomial_df, nonlinear_df):
     plt.figure(figsize=(10, 6))
-    plt.scatter(xy_df[X_COLUMN], xy_df[Y_COLUMN], label="原始数据", color="#222222", zorder=3)
+    plt.scatter(xy_df[X_COLUMN], xy_df[Y_COLUMN], label="原始数据", color=科研配色["红"], zorder=3)
 
     plt.plot(
         interpolation_df[X_COLUMN],
         interpolation_df.iloc[:, 1],
         label=f"{INTERPOLATION_METHOD}插值",
-        color="#3A6EA5",
+        color=科研配色["深蓝"],
         linewidth=2,
     )
     plt.plot(
         polynomial_df[X_COLUMN],
         polynomial_df["多项式最小二乘拟合值"],
         label=f"{POLYNOMIAL_DEGREE}次多项式最小二乘",
-        color="#D95F02",
+        color=科研配色["红"],
         linewidth=2,
     )
     if nonlinear_df is not None:
@@ -231,7 +241,7 @@ def plot_all_methods(xy_df, interpolation_df, polynomial_df, nonlinear_df):
             nonlinear_df[X_COLUMN],
             nonlinear_df.iloc[:, 1],
             label=f"{NONLINEAR_MODEL}非线性最小二乘",
-            color="#1B9E77",
+            color=科研配色["浅蓝"],
             linewidth=2,
         )
 
@@ -255,8 +265,8 @@ def plot_residual_compare(x, interpolation_resid, polynomial_resid, nonlinear_re
     residual_df = pd.concat(residual_data, ignore_index=True)
 
     plt.figure(figsize=(10, 5.5))
-    sns.lineplot(data=residual_df, x=X_COLUMN, y="残差", hue="方法", marker="o")
-    plt.axhline(0, color="#222222", linestyle="--", linewidth=1)
+    sns.lineplot(data=residual_df, x=X_COLUMN, y="残差", hue="方法", marker="o", palette=科研调色板)
+    plt.axhline(0, color=科研配色["红"], linestyle="--", linewidth=1)
     plt.title("拟合残差对比")
     plt.xlabel(X_COLUMN)
     plt.ylabel("残差")
