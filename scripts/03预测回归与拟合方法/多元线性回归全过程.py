@@ -11,7 +11,7 @@ Usage:
     1. Put your data file in the data/ folder.
     2. Edit INPUT_FILE, TARGET_COLUMN, and FEATURE_COLUMNS.
     3. Run:
-       python scripts/三/多元线性回归全过程.py
+       python scripts/03预测回归与拟合方法/多元线性回归全过程.py
 """
 
 from pathlib import Path
@@ -35,7 +35,7 @@ import statsmodels.api as sm
 
 
 INPUT_FILE = Path("data/your_data.csv")
-OUTPUT_DIR = Path("outputs/三/多元线性回归")
+OUTPUT_DIR = Path("outputs/03预测回归与拟合方法/多元线性回归")
 
 # Optional ID/name column. Set to None if there is no ID column.
 ID_COLUMN = None

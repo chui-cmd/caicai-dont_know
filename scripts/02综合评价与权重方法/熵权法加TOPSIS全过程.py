@@ -14,7 +14,7 @@ Usage:
     1. Put your data file in the data/ folder.
     2. Edit INPUT_FILE, ID_COLUMN, and INDICATORS.
     3. Run:
-       python scripts/二/熵权法加TOPSIS全过程.py
+       python scripts/02综合评价与权重方法/熵权法加TOPSIS全过程.py
 """
 
 from pathlib import Path
@@ -38,7 +38,7 @@ import seaborn as sns
 
 
 INPUT_FILE = Path("data/your_data.csv")
-OUTPUT_DIR = Path("outputs/二/熵权法加TOPSIS")
+OUTPUT_DIR = Path("outputs/02综合评价与权重方法/熵权法加TOPSIS")
 
 # Optional ID/name column. Set to None if there is no ID column.
 ID_COLUMN = "方案"

@@ -12,7 +12,7 @@ Usage:
     1. Put your data file in the data/ folder.
     2. Edit INPUT_FILE, ID_COLUMN, FEATURE_COLUMNS, and K_VALUE.
     3. Run:
-       python scripts/五/Kmeans聚类全过程.py
+       python scripts/05聚类与分类方法/Kmeans聚类全过程.py
 """
 
 from pathlib import Path
@@ -39,7 +39,7 @@ from sklearn.preprocessing import StandardScaler
 
 
 INPUT_FILE = Path("data/your_cluster_data.csv")
-OUTPUT_DIR = Path("outputs/五/Kmeans聚类")
+OUTPUT_DIR = Path("outputs/05聚类与分类方法/Kmeans聚类")
 
 # Optional ID/name column. Set to None if there is no ID column.
 ID_COLUMN = "样本"

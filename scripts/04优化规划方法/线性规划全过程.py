@@ -12,7 +12,7 @@ For maximization, set OBJECTIVE_SENSE = "max"; the script will transform it.
 Usage:
     1. Edit VARIABLE_NAMES, OBJECTIVE_COEFFICIENTS, constraints, and BOUNDS.
     2. Run:
-       python scripts/四/线性规划全过程.py
+       python scripts/04优化规划方法/线性规划全过程.py
 """
 
 from pathlib import Path
@@ -36,7 +36,7 @@ import seaborn as sns
 from scipy.optimize import linprog
 
 
-OUTPUT_DIR = Path("outputs/四/线性规划")
+OUTPUT_DIR = Path("outputs/04优化规划方法/线性规划")
 
 # Decision variables.
 VARIABLE_NAMES = ["x1", "x2", "x3"]

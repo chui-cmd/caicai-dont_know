@@ -11,7 +11,7 @@ Usage:
     1. Put your data file in the data/ folder.
     2. Edit INPUT_FILE, X_COLUMN, Y_COLUMN, and method settings.
     3. Run:
-       python scripts/三/插值与最小二乘拟合全过程.py
+       python scripts/03预测回归与拟合方法/插值与最小二乘拟合全过程.py
 """
 
 from pathlib import Path
@@ -37,7 +37,7 @@ from scipy.optimize import curve_fit
 
 
 INPUT_FILE = Path("data/your_xy_data.csv")
-OUTPUT_DIR = Path("outputs/三/插值与最小二乘拟合")
+OUTPUT_DIR = Path("outputs/03预测回归与拟合方法/插值与最小二乘拟合")
 
 # Edit these after you get the real data.
 X_COLUMN = "x"

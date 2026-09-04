@@ -5,7 +5,7 @@ Usage:
     1. Edit JUDGMENT_MATRIX and CRITERIA_NAMES.
     2. Optionally put alternative scores in data/ and edit INPUT_FILE.
     3. Run:
-       python scripts/二/层次分析法全过程.py
+       python scripts/02综合评价与权重方法/层次分析法全过程.py
 """
 
 from pathlib import Path
@@ -28,7 +28,7 @@ import pandas as pd
 import seaborn as sns
 
 
-OUTPUT_DIR = Path("outputs/二/层次分析法")
+OUTPUT_DIR = Path("outputs/02综合评价与权重方法/层次分析法")
 
 # Pairwise judgment matrix. a_ij means criterion i is a_ij times as important as criterion j.
 # Common scale: 1, 3, 5, 7, 9 and reciprocals 1/3, 1/5, 1/7, 1/9.

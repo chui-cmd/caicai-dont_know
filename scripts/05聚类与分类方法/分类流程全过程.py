@@ -12,7 +12,7 @@ Usage:
     1. Put your data file in the data/ folder.
     2. Edit INPUT_FILE, TARGET_COLUMN, and FEATURE_COLUMNS.
     3. Run:
-       python scripts/五/分类流程全过程.py
+       python scripts/05聚类与分类方法/分类流程全过程.py
 """
 
 from pathlib import Path
@@ -50,7 +50,7 @@ from sklearn.preprocessing import LabelEncoder, StandardScaler
 
 
 INPUT_FILE = Path("data/your_classification_data.csv")
-OUTPUT_DIR = Path("outputs/五/分类流程")
+OUTPUT_DIR = Path("outputs/05聚类与分类方法/分类流程")
 
 # Optional ID/name column. Set to None if there is no ID column.
 ID_COLUMN = "样本"

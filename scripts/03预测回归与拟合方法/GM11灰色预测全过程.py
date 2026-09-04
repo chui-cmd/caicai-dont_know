@@ -12,7 +12,7 @@ Usage:
     1. Put your time series data file in the data/ folder.
     2. Edit INPUT_FILE, TIME_COLUMN, VALUE_COLUMN, and PREDICT_STEPS.
     3. Run:
-       python scripts/三/GM11灰色预测全过程.py
+       python scripts/03预测回归与拟合方法/GM11灰色预测全过程.py
 """
 
 from pathlib import Path
@@ -36,7 +36,7 @@ import seaborn as sns
 
 
 INPUT_FILE = Path("data/your_time_series.csv")
-OUTPUT_DIR = Path("outputs/三/GM11灰色预测")
+OUTPUT_DIR = Path("outputs/03预测回归与拟合方法/GM11灰色预测")
 
 # Edit these after you get the real data.
 TIME_COLUMN = "年份"

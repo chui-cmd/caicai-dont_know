@@ -12,7 +12,7 @@ For maximization, set OBJECTIVE_SENSE = "max"; the script will transform it.
 Usage:
     1. Edit VARIABLE_NAMES, OBJECTIVE_COEFFICIENTS, constraints, BOUNDS, and INTEGRALITY.
     2. Run:
-       python scripts/四/整数规划与01规划全过程.py
+       python scripts/04优化规划方法/整数规划与01规划全过程.py
 """
 
 from pathlib import Path
@@ -36,7 +36,7 @@ import seaborn as sns
 from scipy.optimize import Bounds, LinearConstraint, milp
 
 
-OUTPUT_DIR = Path("outputs/四/整数规划与01规划")
+OUTPUT_DIR = Path("outputs/04优化规划方法/整数规划与01规划")
 
 # Example: mixed integer 0-1 selection problem.
 VARIABLE_NAMES = ["选择项目1", "选择项目2", "选择项目3", "选择项目4"]
