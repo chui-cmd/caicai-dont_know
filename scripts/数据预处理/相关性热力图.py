@@ -5,7 +5,7 @@ Usage:
     1. Put your data file in the data/ folder.
     2. Edit INPUT_FILE and INDICATOR_COLUMNS.
     3. Run:
-       python scripts/相关性热力图.py
+       python scripts/数据预处理/相关性热力图.py
 """
 
 from pathlib import Path

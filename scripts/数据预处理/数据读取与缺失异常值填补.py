@@ -5,7 +5,7 @@ Usage:
     1. Put your data file in the data/ folder.
     2. Edit INPUT_FILE, OUTPUT_DIR, and COLUMN_RULES.
     3. Run:
-       python scripts/数据读取与缺失异常值填补.py
+       python scripts/数据预处理/数据读取与缺失异常值填补.py
 """
 
 from pathlib import Path

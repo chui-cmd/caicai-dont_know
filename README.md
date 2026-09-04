@@ -14,18 +14,18 @@
 ## 已有脚本
 
 - `九九乘法表.py`: 九九乘法表 Python 示例
-- `scripts/指标预处理模板.py`: 指标正向化、Z-score 标准化、极差标准化模板
-- `scripts/相关性热力图.py`: Pearson 与 Spearman 相关性热力图模板
-- `scripts/数据读取与缺失异常值填补.py`: 数据读取、缺失值填补、异常值检测与处理模板
+- `scripts/数据预处理/指标预处理模板.py`: 指标正向化、Z-score 标准化、极差标准化模板
+- `scripts/数据预处理/相关性热力图.py`: Pearson 与 Spearman 相关性热力图模板
+- `scripts/数据预处理/数据读取与缺失异常值填补.py`: 数据读取、缺失值填补、异常值检测与处理模板
 
 ## 常用命令
 
 ```powershell
 pip install -r requirements.txt
 python 九九乘法表.py
-python scripts/指标预处理模板.py
-python scripts/相关性热力图.py
-python scripts/数据读取与缺失异常值填补.py
+python scripts/数据预处理/指标预处理模板.py
+python scripts/数据预处理/相关性热力图.py
+python scripts/数据预处理/数据读取与缺失异常值填补.py
 git status
 git add .
 git commit -m "Update modeling code"

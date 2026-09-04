@@ -11,7 +11,7 @@ Usage:
     1. Put your data file in the data/ folder.
     2. Edit INPUT_FILE and INDICATORS below.
     3. Run:
-       python scripts/指标预处理模板.py
+       python scripts/数据预处理/指标预处理模板.py
 """
 
 from pathlib import Path
