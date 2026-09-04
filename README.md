@@ -11,16 +11,19 @@
 - `outputs/`: 图表、预测结果等输出文件，默认不提交到 GitHub
 - `docs/`: 建模思路、公式推导和报告材料
 
-## 已有示例
+## 已有脚本
 
 - `九九乘法表.py`: 九九乘法表 Python 示例
-- `scripts/指标预处理模板.py`: 指标正向化与标准化模板
+- `scripts/指标预处理模板.py`: 指标正向化、Z-score 标准化、极差标准化模板
+- `scripts/相关性热力图.py`: Pearson 与 Spearman 相关性热力图模板
 
 ## 常用命令
 
 ```powershell
+pip install -r requirements.txt
 python 九九乘法表.py
 python scripts/指标预处理模板.py
+python scripts/相关性热力图.py
 git status
 git add .
 git commit -m "Update modeling code"
