@@ -9,6 +9,7 @@
 - `scripts/数据预处理/`: 数据读取、清洗、标准化和相关性分析
 - `scripts/二/`: 综合评价与权重计算方法
 - `scripts/三/`: 后续第三类模型与分析脚本
+- `scripts/四/`: 后续第四类模型与分析脚本
 - `notebooks/`: Jupyter Notebook 分析过程
 - `data/`: 本地数据文件，默认不提交到 GitHub
 - `outputs/`: 图表、预测结果等输出文件，默认不提交到 GitHub
